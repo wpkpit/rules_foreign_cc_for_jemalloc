@@ -1,0 +1,13 @@
+diff --git a/src/arena.c b/src/arena.c
+index ba50e41..f8edda8 100644
+--- a/src/arena.c
++++ b/src/arena.c
+@@ -1,7 +1,7 @@
+ #define JEMALLOC_ARENA_C_
+ #include "jemalloc/internal/jemalloc_preamble.h"
+ #include "jemalloc/internal/jemalloc_internal_includes.h"
+-
++#define _ABSOLUTELY_NOTING_
+ #include "jemalloc/internal/assert.h"
+ #include "jemalloc/internal/div.h"
+ #include "jemalloc/internal/extent_dss.h"
