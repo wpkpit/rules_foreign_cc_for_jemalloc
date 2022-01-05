@@ -9,6 +9,7 @@ int main()
         return -1;
         
     printf("Allocated memory\n");
+    malloc_stats_print(NULL, NULL, NULL);
         
     return 0;
 }
