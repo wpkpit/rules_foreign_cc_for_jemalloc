@@ -1,3 +1,4 @@
+workspace(name = "ddad")
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 
 # Rule repository
@@ -23,7 +24,10 @@ http_archive(
    urls = [
        "https://github.com/jemalloc/jemalloc/releases/download/5.2.1/jemalloc-5.2.1.tar.bz2",
    ],
-   patches = ["//patches:BUILD.jemalloc.patch"],
+   patches = [
+      "//patches:BUILD.jemalloc.patch", 
+      # "//patches:BUILD.jemalloc.gen_headers.patch", 
+   ],
    patch_args = ["-p1"],
 )
 
