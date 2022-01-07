@@ -1,14 +1,13 @@
 
 filegroup(
-    name = "jemalloc_unix_headers",
-    srcs = glob(["include_unix/**/*.h"]),
+    name = "jemalloc_unix_header_files",
+    srcs = glob(["unix_headers/**/*.h"]),
     visibility = ["//visibility:public"],
 )
 
-# https://docs.bazel.build/versions/master/be/c-cpp.html#cc_library
 cc_library(
-    name = "jemalloc_unix_lib",
-    hdrs = [":jemalloc_unix_headers"],
-    includes = ["include_unix"],
+    name = "jemalloc_unix_headers",
+    hdrs = [":jemalloc_unix_header_files"],
+    includes = ["unix_headers"],
     visibility = ["//visibility:public"],
 )

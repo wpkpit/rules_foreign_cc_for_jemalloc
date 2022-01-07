@@ -26,7 +26,6 @@ http_archive(
    ],
    patches = [
       "//patches:BUILD.jemalloc.patch", 
-      # "//patches:BUILD.jemalloc.gen_headers.patch", 
    ],
    patch_args = ["-p1"],
 )
