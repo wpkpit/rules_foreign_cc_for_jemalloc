@@ -1,0 +1,15 @@
+# bazel run //src/test:jemalloc_test
+cc_test(
+    name = "jemalloc_test",
+    srcs = ["jemalloc_test.cpp"],
+    deps = [
+      "@com_google_googletest//:gtest_main",
+      "@jemalloc//:jemalloc",
+    ],
+    copts = ["-Wall", "-Werror", "-fno-builtin-malloc"],
+    linkopts = [
+        "-lpthread",
+        "-ldl",
+    ],
+    visibility = ["//visibility:public"],
+)
