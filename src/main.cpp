@@ -1,10 +1,10 @@
-#include <stdio.h>
+#include <iostream>
 
 #include "jemalloc/jemalloc.h"
 
 int main()
 {
-    void *p = malloc(1024);
+    int *p = new int[1024];
     if (p == NULL)
         return -1;
         

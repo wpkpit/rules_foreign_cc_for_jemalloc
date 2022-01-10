@@ -1,0 +1,74 @@
+cc_test(
+  name = "hello_test",
+  size = "small",
+  srcs = ["test.cpp"],
+  deps = [
+    "@com_google_googletest//:gtest_main",
+  ],
+)
+
+# bazel run //src/test:fillFlush 
+cc_binary(
+    name = "fillFlush",
+    srcs = ["fillFlush.cpp"],
+    deps = [
+      "@jemalloc//:jemalloc",
+      "@com_github_gflags_gflags//:gflags",
+    ],
+    copts = ["-Wall", "-Werror", "-fno-builtin-malloc", "-Wno-sign-compare"],
+    linkopts = [
+        "-lpthread",
+        "-ldl",
+    ],
+    visibility = ["//visibility:public"],
+)
+
+# bazel run //src/test:memsetVsMadvise 
+cc_binary(
+    name = "memsetVsMadvise",
+    srcs = ["util.h", "memsetVsMadvise.cpp"],
+    deps = [
+      "@jemalloc//:jemalloc",
+      "@com_github_gflags_gflags//:gflags",
+    ],
+    copts = ["-Wall", "-Werror", "-fno-builtin-malloc", "-Wno-sign-compare"],
+    linkopts = [
+        "-lpthread",
+        "-ldl",
+    ],
+    visibility = ["//visibility:public"],
+)
+
+
+# bazel run //src/test:stressTest -- --distribution_file=/home/qxz2elq/adfinder.txt
+# bazel run //src/test:stressTest -- --distribution_file=/home/qxz2elq/adindexer.txt
+# bazel run //src/test:stressTest -- --distribution_file=/home/qxz2elq/multifeed.txt
+cc_binary(
+    name = "stressTest",
+    srcs = [
+      "Main.cpp",
+      "Producers.cpp",
+      "Mixer.cpp",
+      "ThreadObject.cpp",
+      "Distribution.cpp",
+      "Allocation.cpp",
+
+      "Allocation.h",
+      "Distribution.h",
+      "Mixer.h",
+      "Producers.h",
+      "ThreadObject.h",
+      "SizeConstants.h",
+      
+    ],
+    deps = [
+      "@jemalloc//:jemalloc",
+      "@com_github_gflags_gflags//:gflags",
+    ],
+    copts = ["-Wall", "-Werror", "-fno-builtin-malloc", "-Wno-sign-compare", "-Wno-reorder", "-Wno-unused-variable"],
+    linkopts = [
+        "-lpthread",
+        "-ldl",
+    ],
+    visibility = ["//visibility:public"],
+)

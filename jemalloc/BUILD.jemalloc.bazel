@@ -71,4 +71,5 @@ cc_library(
     deps = [
         "@ddad//jemalloc:jemalloc_unix_headers",
     ],
+    linkstatic=False,
 )
